@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; scroll-snap-type: y mandatory; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
       background: #f8fafc;
@@ -42,8 +42,8 @@
     }
 
     h1, h2, h3 { color: var(--text-heading); line-height: 1.2; letter-spacing: -0.02em; }
-    h1 { font-family: 'Playfair Display', serif; font-weight: 600; font-size: clamp(2.2rem, 5vw, 3.2rem); letter-spacing: -0.03em; }
-    h2 { font-family: 'Playfair Display', serif; font-weight: 600; font-size: clamp(1.8rem, 3vw, 2.2rem); letter-spacing: -0.025em; }
+    h1 { font-family: 'Playfair Display', serif; font-weight: 600; font-size: clamp(2.6rem, 5vw, 3.6rem); letter-spacing: -0.03em; }
+    h2 { font-family: 'Playfair Display', serif; font-weight: 600; font-size: clamp(1.8rem, 3vw, 2.4rem); letter-spacing: -0.025em; }
     h3 { font-family: 'Inter', sans-serif; font-weight: 600; font-size: clamp(1.1rem, 2vw, 1.3rem); }
     p  { color: var(--text-body); margin-bottom: 1em; max-width: 65ch; }
     a  { color: var(--blue); text-decoration: none; transition: color var(--transition); }
@@ -74,16 +74,11 @@
 
     /* ========== SCREEN SECTIONS ========== */
     .screen {
-      min-height: 100vh;
-      scroll-snap-align: start;
-      display: flex;
-      align-items: center;
-      padding: 72px 0 48px;
+      padding: 96px 0 80px;
     }
     .screen-alt { background: var(--bg-alt); }
     #hero.screen {
-      min-height: 100vh;
-      padding: 64px 0 40px;
+      padding: 80px 0 64px;
     }
 
     /* ===== SCREEN 1: HERO ===== */
@@ -130,9 +125,9 @@
       font-family: 'Playfair Display', serif;
       font-weight: 600;
       font-style: italic;
-      font-size: clamp(2.6rem, 4.5vw, 3.4rem);
+      font-size: clamp(3rem, 5vw, 4rem);
       letter-spacing: -0.025em;
-      line-height: 1.15;
+      line-height: 1.1;
       margin-bottom: 14px;
     }
     .hero-location {
@@ -393,8 +388,8 @@
     /* ========== RESPONSIVE ========== */
     @media (max-width: 768px) {
       html { scroll-snap-type: none; }
-      .screen { min-height: auto; padding: 64px 0 48px; }
-      #hero.screen { height: auto; min-height: auto; padding: 48px 0 36px; }
+      .screen { padding: 64px 0 48px; }
+      #hero.screen { padding: 48px 0 36px; }
       .hero-layout { grid-template-columns: 1fr; text-align: center; }
       .hero-photo { width: 200px; height: 200px; margin: 0 auto; order: -1; }
       .hero-location { justify-content: center; }
