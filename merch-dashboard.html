@@ -159,6 +159,76 @@
       height: 1px; background: var(--border); margin: 28px 0;
     }
 
+    /* PROMPT CARDS */
+    .prompt-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px 22px;
+      margin: 16px 0;
+      box-shadow: var(--shadow-sm);
+    }
+    .prompt-card .pc-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+    .prompt-card .pc-step {
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: var(--text-light);
+      letter-spacing: 0.05em;
+    }
+    .prompt-card .pc-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: 1rem;
+      color: var(--text-heading);
+    }
+    .prompt-card .pc-tag {
+      font-size: 0.72rem;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: var(--blue-bg);
+      color: var(--blue-dark);
+      font-weight: 500;
+    }
+    .prompt-card .pc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .prompt-card .pc-label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--text-light);
+      margin-bottom: 4px;
+    }
+    .prompt-card .pc-field p {
+      font-size: 0.88rem;
+      margin-bottom: 0;
+    }
+    .prompt-card .pc-prompt {
+      margin-top: 4px;
+    }
+    .prompt-card .pc-code {
+      background: #1e293b;
+      color: #e2e8f0;
+      font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+      font-size: 0.78rem;
+      line-height: 1.65;
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      white-space: pre-wrap;
+      margin-top: 4px;
+    }
+
     /* IMAGE LAYOUT */
     .img-row {
       display: flex; gap: 16px; margin: 0 0 16px;
@@ -187,6 +257,7 @@
       .container { padding: 0 18px; }
       .page-hero { padding: 76px 0 28px; }
       .img-row { flex-direction: column; gap: 12px; }
+      .prompt-card .pc-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -353,6 +424,84 @@
           <li>Define clear natural-language prompts with context and constraints</li>
           <li>Review all AI-generated code for correctness — AI is a copilot, not the pilot</li>
         </ul>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- ============ 3. REUSABLE AI PROMPT TEMPLATES ============ -->
+      <h2>3. Reusable AI Prompt Templates</h2>
+      <p>Rather than relying on generic prompts, structured prompts were developed for each stage of the project. Each template follows the same pattern: set the role, provide the context, specify the output format.</p>
+
+      <div class="prompt-card">
+        <div class="pc-header">
+          <span class="pc-step">01</span>
+          <span class="pc-title">Data Exploration</span>
+          <span class="pc-tag">Understand data structure &amp; quality</span>
+        </div>
+        <div class="pc-grid">
+          <div class="pc-field">
+            <span class="pc-label">What you need to provide</span>
+            <p>Data source, core metric, date field, and dimensions to analyse.</p>
+          </div>
+          <div class="pc-field">
+            <span class="pc-label">What AI should return</span>
+            <p>Summary of tables and fields. Data quality issues, such as missing values or inconsistent definitions. Important limitations or unusual findings.</p>
+          </div>
+        </div>
+        <div class="pc-prompt">
+          <span class="pc-label">Example Prompt</span>
+          <div class="pc-code">
+You are a data analyst. Based on the dataset I provide, explore the data using the core metric and date field. Summarise the tables and key fields, explain how they are related, identify any data quality issues or limitations, and report only what the data shows. Do not make business recommendations yet.
+          </div>
+        </div>
+      </div>
+
+      <div class="prompt-card">
+        <div class="pc-header">
+          <span class="pc-step">02</span>
+          <span class="pc-title">Business Requirements</span>
+          <span class="pc-tag">Turn goals into dashboard ideas</span>
+        </div>
+        <div class="pc-grid">
+          <div class="pc-field">
+            <span class="pc-label">What you need to provide</span>
+            <p>Project background, business scenario, core metric, and target audience (manager, operations, marketing, etc.).</p>
+          </div>
+          <div class="pc-field">
+            <span class="pc-label">What AI should return</span>
+            <p>Three to four analysis topics. Recommended KPIs, dimensions, and chart types for each topic. Conclusions supported by the data and hypotheses that need validation.</p>
+          </div>
+        </div>
+        <div class="pc-prompt">
+          <span class="pc-label">Example Prompt</span>
+          <div class="pc-code">
+You are a business analyst. Based on the data exploration results, design a dashboard around the core metric. Suggest three to four analysis topics, the KPIs and dimensions for each, the best chart type, and clearly separate data-supported conclusions from ideas that need further validation.
+          </div>
+        </div>
+      </div>
+
+      <div class="prompt-card">
+        <div class="pc-header">
+          <span class="pc-step">03</span>
+          <span class="pc-title">Data Modelling &amp; DAX Measures</span>
+          <span class="pc-tag">Design a simple but effective model</span>
+        </div>
+        <div class="pc-grid">
+          <div class="pc-field">
+            <span class="pc-label">What you need to provide</span>
+            <p>Analysis goal, core metric, dimensions to analyse, available tables and fields, and known data limitations.</p>
+          </div>
+          <div class="pc-field">
+            <span class="pc-label">What AI should return</span>
+            <p>Recommended fact and dimension tables. Relationships between tables. Ideas for key measures and how they should be calculated.</p>
+          </div>
+        </div>
+        <div class="pc-prompt">
+          <span class="pc-label">Example Prompt</span>
+          <div class="pc-code">
+You are a data modelling expert. Help me design a simple but scalable data model for analysing the core metric across the selected dimensions. Recommend the fact and dimension tables, describe their relationships, and suggest the main measures, including how each measure should be calculated and whether different reporting levels require different definitions.
+          </div>
+        </div>
       </div>
 
     </div>
