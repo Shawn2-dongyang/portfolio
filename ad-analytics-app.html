@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advertising Analytics App | Shawn</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #f8fafc;
+      color: #334155;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    :root {
+      --bg-page: #f8fafc; --bg-white: #ffffff; --bg-alt: #f1f5f9;
+      --text-heading: #0f172a; --text-body: #334155; --text-muted: #64748b; --text-light: #94a3b8;
+      --blue: #2563eb; --blue-light: #3b82f6; --blue-bg: #eff6ff; --blue-border: #bfdbfe; --blue-dark: #1d4ed8;
+      --border: #e2e8f0; --radius-lg: 12px; --radius-md: 8px;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,0.04);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.06);
+      --shadow-lg: 0 8px 30px rgba(0,0,0,0.08);
+      --max-width: 1100px;
+      --transition: 0.3s ease;
+    }
+
+    h1 { color: var(--text-heading); line-height: 1.2; letter-spacing: -0.03em; }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600; font-size: clamp(2rem, 4vw, 2.6rem);
+      margin-bottom: 6px;
+    }
+    p  { color: var(--text-body); margin-bottom: 1em; max-width: 65ch; }
+    a  { color: var(--blue); text-decoration: none; transition: color var(--transition); }
+    a:hover { color: var(--blue-dark); }
+
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 0 28px; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+    nav .container {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 56px;
+    }
+    .nav-back {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 0.85rem; font-weight: 500; color: var(--text-muted);
+    }
+    .nav-back:hover { color: var(--text-heading); }
+
+    /* HERO */
+    .page-hero {
+      padding: 96px 0 32px;
+      background: linear-gradient(135deg, #f0f5ff 0%, #fafcff 40%, #f5f7f0 100%);
+    }
+    .page-hero .meta-tags {
+      display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px;
+    }
+    .page-hero .meta-tag {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 3px 10px; border-radius: 999px;
+      font-size: 0.72rem; font-weight: 500;
+      background: var(--blue-bg); color: var(--blue-dark); border: 1px solid var(--blue-border);
+    }
+
+    /* COVER */
+    .cover-wrap {
+      margin: 24px 0 32px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+    .cover-wrap img {
+      width: 100%; display: block;
+    }
+
+    /* VIDEO */
+    .video-section {
+      margin: 0 0 48px;
+    }
+    .video-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      font-size: clamp(1.15rem, 2vw, 1.35rem);
+      color: var(--text-heading);
+      margin-bottom: 16px;
+    }
+    .video-container {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: #000;
+      cursor: pointer;
+      box-shadow: var(--shadow-lg);
+    }
+    .video-container video {
+      width: 100%; display: block;
+    }
+    .play-overlay {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(0,0,0,0.3);
+      transition: background 0.3s ease;
+    }
+    .video-container.playing .play-overlay {
+      opacity: 0; pointer-events: none;
+    }
+    .play-overlay .play-btn {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.9);
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.3s ease, background 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    }
+    .play-overlay .play-btn svg {
+      width: 28px; height: 28px;
+      fill: var(--blue);
+      margin-left: 3px;
+    }
+    .video-container:hover .play-overlay {
+      background: rgba(0,0,0,0.2);
+    }
+    .video-container:hover .play-btn {
+      transform: scale(1.08);
+      background: #fff;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 24px 0; border-top: 1px solid var(--border);
+      text-align: center;
+    }
+    footer p { font-size: 0.8rem; color: var(--text-light); margin: 0; }
+
+    @media (max-width: 640px) {
+      .container { padding: 0 18px; }
+      .page-hero { padding: 76px 0 20px; }
+      .play-overlay .play-btn { width: 56px; height: 56px; }
+      .play-overlay .play-btn svg { width: 22px; height: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="container">
+      <a href="index.html" class="nav-back">← Back to Portfolio</a>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="meta-tags">
+        <span class="meta-tag">Python</span>
+        <span class="meta-tag">Data Analysis</span>
+        <span class="meta-tag">Visualisation</span>
+      </div>
+      <h1>Advertising Analytics App</h1>
+
+      <div class="cover-wrap">
+        <img src="portfolio_assets/ad-analytics/cover.png" alt="Advertising Analytics App">
+      </div>
+    </div>
+  </section>
+
+  <section class="page-content">
+    <div class="container">
+
+      <div class="video-section">
+        <h2>Demo</h2>
+        <div class="video-container" id="videoContainer">
+          <video id="appVideo" preload="metadata">
+            <source src="portfolio_assets/ad-analytics/demo.mp4" type="video/mp4">
+          </video>
+          <div class="play-overlay" id="playOverlay">
+            <div class="play-btn">
+              <svg viewBox="0 0 24 24"><polygon points="8,5 19,12 8,19"/></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>Shawn — User Acquisition &amp; Marketing Analytics</p>
+    </div>
+  </footer>
+
+  <script>
+    const container = document.getElementById('videoContainer');
+    const video = document.getElementById('appVideo');
+    const overlay = document.getElementById('playOverlay');
+
+    container.addEventListener('click', () => {
+      if (video.paused) {
+        video.play();
+        container.classList.add('playing');
+      } else {
+        video.pause();
+        container.classList.remove('playing');
+      }
+    });
+
+    video.addEventListener('ended', () => {
+      container.classList.remove('playing');
+    });
+  </script>
+
+</body>
+</html>

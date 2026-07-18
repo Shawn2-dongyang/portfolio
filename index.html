@@ -419,9 +419,8 @@
     }
     .projects-grid {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-      max-width: 600px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
     }
     .project-card {
       border: none;
@@ -673,6 +672,13 @@
           <div class="p-visual"><img src="portfolio_assets/merch-dashboard/cover.png" alt=""></div>
           <div class="p-body">
             <h3>E-commerce Analytics Dashboard</h3>
+            <span class="p-link">View project →</span>
+          </div>
+        </div>
+        <div class="project-card" onclick="location.href='ad-analytics-app.html'">
+          <div class="p-visual"><img src="portfolio_assets/ad-analytics/cover.png" alt=""></div>
+          <div class="p-body">
+            <h3>Advertising Analytics App</h3>
             <span class="p-link">View project →</span>
           </div>
         </div>
