@@ -159,6 +159,23 @@
       height: 1px; background: var(--border); margin: 28px 0;
     }
 
+    /* IMAGE LAYOUT */
+    .img-row {
+      display: flex; gap: 16px; margin: 0 0 16px;
+    }
+    .img-row img {
+      flex: 1; min-width: 0;
+      max-width: 100%; border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      display: block;
+    }
+    .img-full {
+      max-width: 100%; border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      margin: 0 0 32px;
+      display: block;
+    }
+
     /* FOOTER */
     footer {
       padding: 24px 0; border-top: 1px solid var(--border);
@@ -169,6 +186,7 @@
     @media (max-width: 640px) {
       .container { padding: 0 18px; }
       .page-hero { padding: 76px 0 28px; }
+      .img-row { flex-direction: column; gap: 12px; }
     }
   </style>
 </head>
@@ -198,7 +216,11 @@
   <section class="page-content">
     <div class="container">
 
-      <img src="portfolio_assets/merch-dashboard/dashboard-overview.png" alt="Dashboard overview">
+      <div class="img-row">
+        <img src="portfolio_assets/merch-dashboard/dashboard-overview.png" alt="Dashboard overview">
+        <img src="portfolio_assets/merch-dashboard/data-model.png" alt="Data model">
+      </div>
+      <img src="portfolio_assets/merch-dashboard/insights.png" alt="Business insights" class="img-full">
 
       <!-- ============ 1. PROJECT WORKFLOW ============ -->
       <h2>1. Project Workflow</h2>
@@ -244,8 +266,6 @@
       <h3>1.3 Data Modelling &amp; DAX Development</h3>
       <p>To support interactive analysis while keeping the model simple, I designed a lightweight star schema.</p>
 
-      <img src="portfolio_assets/merch-dashboard/data-model.png" alt="Data model">
-
       <p><strong>The semantic model consists of:</strong></p>
       <ul>
         <li>Two fact tables
@@ -285,8 +305,6 @@
         <li><strong>Revenue by Country</strong> — geographic distribution</li>
         <li><strong>Revenue by Product Category</strong> — product-level performance</li>
       </ul>
-
-      <img src="portfolio_assets/merch-dashboard/insights.png" alt="Business insights">
 
       <h4>Key Business Insights</h4>
 
