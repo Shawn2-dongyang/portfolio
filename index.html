@@ -419,8 +419,9 @@
     }
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: 1fr;
       gap: 20px;
+      max-width: 600px;
     }
     .project-card {
       background: var(--bg-white);
@@ -649,19 +650,6 @@
       <h2>Projects</h2>
       <p class="projects-intro">Real campaigns and analytics work. Click to see the full story.</p>
       <div class="projects-grid">
-        <div class="project-card" onclick="location.href='pok-elf.html'">
-          <div class="p-visual">🎮</div>
-          <div class="p-body">
-            <div class="p-tags">
-              <span class="p-tag">Google Ads</span>
-              <span class="p-tag">Meta</span>
-              <span class="p-tag">TikTok</span>
-            </div>
-            <h3>Pok-elf — Mobile Game UA</h3>
-            <p>$417K UA spend, 154% ROAS. Market tiering, audience framework, creative strategy across 3 platforms.</p>
-            <span class="p-link">View case study →</span>
-          </div>
-        </div>
         <div class="project-card" onclick="location.href='ga360.html'">
           <div class="p-visual">🛒</div>
           <div class="p-body">
