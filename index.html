@@ -210,31 +210,54 @@
       margin-bottom: 0;
     }
 
-    /* ===== POK-ELF BLUE BUTTON ===== */
+    /* ===== POK-ELF PREMIUM BUTTON ===== */
     .hero-pokelf-btn {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
       margin-top: 22px;
-      padding: 13px 32px;
+      padding: 14px 28px;
       background: var(--blue);
       border: none;
-      border-radius: var(--radius-md);
-      color: #fff;
+      border-radius: 999px;
+      color: #fff !important;
       text-decoration: none;
-      transition: all var(--transition);
+      font-size: 0.92rem;
+      transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       cursor: pointer;
-      box-shadow: 0 4px 14px rgba(37,99,235,0.3);
-      font-size: 0.95rem;
+      box-shadow: 0 4px 16px rgba(37,99,235,0.25);
     }
     .hero-pokelf-btn:hover {
-      background: var(--blue-dark);
-      box-shadow: 0 6px 20px rgba(37,99,235,0.4);
-      transform: translateY(-2px);
+      background: #1d4ed8;
+      color: #fff !important;
+      box-shadow: 0 8px 28px rgba(37,99,235,0.35);
+      transform: translateY(-3px);
+    }
+    .hero-pokelf-btn:active {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(37,99,235,0.25);
     }
     .hero-pokelf-btn .btn-click {
       font-family: 'Playfair Display', serif;
       font-weight: 700;
       font-style: italic;
-      font-size: 1.15rem;
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+    .hero-pokelf-btn .btn-body {
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+    }
+    .hero-pokelf-btn .btn-arrow {
+      font-size: 1.1rem;
+      transition: transform 0.3s ease;
+      opacity: 0.7;
+      line-height: 1;
+    }
+    .hero-pokelf-btn:hover .btn-arrow {
+      transform: translateX(4px);
+      opacity: 1;
     }
 
     .hero-approach {
@@ -464,7 +487,9 @@
             I bring six years of paid media experience and a Master of Applied Data Science from the University of Canterbury, and I'm now building my data capability to create value in the New Zealand market.
           </p>
           <a href="pok-elf.html" class="hero-pokelf-btn">
-            <span class="btn-click">Click</span> here to view a real commercial work
+            <span class="btn-click">Click</span>
+            <span class="btn-body">here to view a real commercial work</span>
+            <span class="btn-arrow">→</span>
           </a>
         </div>
         <div style="display:flex;flex-direction:column;align-items:center;">
