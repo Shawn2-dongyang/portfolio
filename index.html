@@ -210,27 +210,31 @@
       margin-bottom: 0;
     }
 
-    /* ===== POK-ELF RED BUTTON ===== */
+    /* ===== POK-ELF BLUE BUTTON ===== */
     .hero-pokelf-btn {
       display: inline-block;
       margin-top: 22px;
-      padding: 12px 28px;
-      background: #dc2626;
+      padding: 13px 32px;
+      background: var(--blue);
       border: none;
       border-radius: var(--radius-md);
       color: #fff;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.92rem;
-      font-weight: 600;
       text-decoration: none;
       transition: all var(--transition);
       cursor: pointer;
-      box-shadow: 0 4px 14px rgba(220,38,38,0.3);
+      box-shadow: 0 4px 14px rgba(37,99,235,0.3);
+      font-size: 0.95rem;
     }
     .hero-pokelf-btn:hover {
-      background: #b91c1c;
-      box-shadow: 0 6px 20px rgba(220,38,38,0.4);
+      background: var(--blue-dark);
+      box-shadow: 0 6px 20px rgba(37,99,235,0.4);
       transform: translateY(-2px);
+    }
+    .hero-pokelf-btn .btn-click {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-style: italic;
+      font-size: 1.15rem;
     }
 
     .hero-approach {
@@ -460,7 +464,7 @@
             I bring six years of paid media experience and a Master of Applied Data Science from the University of Canterbury, and I'm now building my data capability to create value in the New Zealand market.
           </p>
           <a href="pok-elf.html" class="hero-pokelf-btn">
-            Click here to view a real commercial work
+            <span class="btn-click">Click</span> here to view a real commercial work
           </a>
         </div>
         <div style="display:flex;flex-direction:column;align-items:center;">
